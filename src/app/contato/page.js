@@ -12,16 +12,16 @@ export default function ContatoPage() {
         <section className={styles.infoSection}>
           <div className={styles.contactCard}>
             <h3>E-mail</h3>
-            <p>edson@exemplo.com</p> 
-            <a href="mailto:edson@exemplo.com" className={styles.link}>Enviar Mensagem</a>
+            <p>cordasdomathias@gmail.com</p> 
+            <a href="mailto:cordasdomathias@gmail.com" className={styles.link}>Enviar Mensagem</a>
           </div>
 
           <div className={styles.contactCard}>
             <h3>Redes Sociais</h3>
             <div className={styles.socialLinks}>
-              <a href="https://instagram.com/seuusuario" target="_blank">Instagram</a>
-              <a href="https://github.com/seuusuario" target="_blank">GitHub</a>
-              <a href="https://linkedin.com/in/seuusuario" target="_blank">LinkedIn</a>
+              <a href="https://instagram.com/cordasdemathias/" target="_blank">Instagram</a>
+              
+             
             </div>
           </div>
         </section>
