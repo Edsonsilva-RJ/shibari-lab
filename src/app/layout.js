@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
         <Analytics />
 
         <footer className="main-footer">
-          <p>&copy; {new Date().getFullYear()} Shibari Lab - Edson. Rio de Janeiro.</p>
+          <p>&copy; {new Date().getFullYear()} Shibari Lab - Mathias. Rio de Janeiro.</p>
         </footer>
       </body>
     </html>
