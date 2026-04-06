@@ -1,33 +1,31 @@
 name: Verificar Build do Site 🤖
 
-# O que ativa o robô? (Gatilho)
 on:
   pull_request:
-    branches: [main] # Só roda quando você tentar mandar algo para a main
+    branches: [main]
 
 jobs:
   testar-codigo:
-    runs-on: ubuntu-latest # O robô vai usar um computador Linux (Ubuntu)
+    runs-on: ubuntu-latest
+    
+    # Aqui ativamos a variável que o GitHub sugeriu para usar o Node 24 agora
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      # Passo 1: O robô entra na sua pasta do GitHub
       - name: Baixar código do repositório
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # A v4 já suporta o Node 24 se forçado
 
-      # Passo 2: O robô instala o Node.js (como você fez no seu PC)
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24 # Atualizamos a versão do Node para a 24
           cache: 'npm'
 
-      # Passo 3: O robô instala as bibliotecas (npm install)
       - name: Instalar dependências
         run: npm install
 
-      # Passo 4: O robô tenta buildar o projeto (A hora da verdade!)
       - name: Executar Build do Next.js
         run: npm run build
         env:
-          # Precisamos passar a variável do Cloudinary para o robô não dar erro
           NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
