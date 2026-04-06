@@ -1,0 +1,82 @@
+.container {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.agendaList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eventoCard {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.dateBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--accent);
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  min-width: 80px;
+}
+
+.day { font-size: 1.5rem; font-weight: bold; }
+.month { font-size: 0.8rem; text-transform: uppercase; }
+
+.details { flex-grow: 1; }
+.details h2 { margin-bottom: 0.5rem; font-size: 1.4rem; }
+.details p { font-size: 0.9rem; opacity: 0.8; }
+
+.statusTag {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.btnInscriçao {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btnDisabled {
+  background-color: #ccc;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .eventoCard { flex-direction: column; text-align: center; }
+}

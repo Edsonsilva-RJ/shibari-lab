@@ -1,0 +1,20 @@
+.themeBtn {
+  background: none;
+  border: 1px solid var(--foreground);
+  color: var(--foreground);
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.themeBtn:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}

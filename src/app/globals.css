@@ -1,0 +1,100 @@
+/* src/app/globals.css */
+
+:root {
+  /* Tema Light (Papel/Creme) */
+  --background: #fdfbf7; /* Um creme bem suave */
+  --foreground: #1a1a1b; /* Cinza quase preto para o texto */
+  --accent: #8b4513;     /* Tom de sienna/corda para detalhes */
+  --card-bg: #f5f1e6;    /* Um pouco mais escuro que o fundo */
+  --nav-bg: rgba(253, 251, 247, 0.8);
+}
+
+[data-theme='dark'] {
+  /* Tema Dark (Carvão/Lab) */
+  --background: #121212; /* Preto carvão profundo */
+  --foreground: #e0e0e0; /* Cinza claro para leitura */
+  --accent: #d2b48c;     /* Tom de corda crua (tan) para destaque */
+  --card-bg: #1e1e1e;
+  --nav-bg: rgba(18, 18, 18, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif; /* Se não tiver a Inter, ele usa sans-serif */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* Estilos do Layout */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(10px); /* Efeito de vidro fosco moderno */
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.theme-btn {
+  background: none;
+  border: 1px solid var(--foreground);
+  color: var(--foreground);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+main {
+  margin-top: 80px; /* Para o conteúdo não ficar por baixo do header fixo */
+  min-height: 80vh;
+}
+
+.main-footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
