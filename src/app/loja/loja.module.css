@@ -113,3 +113,21 @@
     gap: 1.5rem;
   }
 }
+/* Espaço reservado para a imagem no topo do card */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 220px; /* Altura fixa ideal para destacar o produto */
+  background-color: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.productImage {
+  object-fit: cover; /* Faz a foto preencher o espaço sem distorcer */
+  transition: transform 0.5s ease;
+}
+
+/* Efeito de zoom sutil na foto quando passas o rato no card */
+.productCard:hover .productImage {
+  transform: scale(1.05);
+}
