@@ -10,7 +10,7 @@ export default function WorkshopsPage() {
       horario: "14:00 - 18:00",
       local: "Estúdio Glória, RJ",
       status: "Inscrições encerradas",
-      formsLink: ""
+      formsLink: "#"
     },
     {
       id: 2,
