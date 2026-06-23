@@ -2,8 +2,9 @@
 import Link from 'next/link';
 import styles from '../lab.module.css';
 
-export default function PesquisaCompletaPage({ params }) {
-  const { id } = params;
+export default async function PesquisaCompletaPage({ params }) {
+  const { id } = await params;
+  const artigoId = Array.isArray(id) ? id[0] : id;
 
   // "Banco de dados" dos seus artigos completos
   const artigos = {
@@ -43,7 +44,7 @@ export default function PesquisaCompletaPage({ params }) {
     }
   };
 
-  const artigo = artigos[id];
+  const artigo = artigos[artigoId] || artigos[String(artigoId)] || artigos[Number(artigoId)];
 
   // Se o usuário digitar um ID que não existe na URL
   if (!artigo) {
