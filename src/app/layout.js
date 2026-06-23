@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react"; // 1. Importe no topo
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Shibari Lab | Edson',
+  title: 'Shibari Lab | Mathias',
   description: 'Portfólio, Workshops e Pesquisas sobre a arte do Shibari.',
 };
 
