@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './lab.module.css';
 
 export default function LabPage() {
@@ -29,7 +30,7 @@ export default function LabPage() {
             <span className={styles.tag}>{item.tag}</span>
             <h2>{item.titulo}</h2>
             <p>{item.resumo}</p>
-            <a href={`/lab/${item.id}`} className={styles.readMore}>Ler pesquisa completa →</a>
+            <Link href={`/lab/${item.id}`} className={styles.readMore}>Ler pesquisa completa →</Link>
           </article>
         ))}
       </section>

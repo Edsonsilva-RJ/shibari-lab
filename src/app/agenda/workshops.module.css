@@ -80,3 +80,30 @@
 @media (max-width: 768px) {
   .eventoCard { flex-direction: column; text-align: center; }
 }
+
+/* Estilização do texto destacado no final da página */
+.infoFooter {
+  margin-top: 4.5rem; /* Afasta o texto do último card com uma distância harmônica */
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08); /* Cria uma linha sutil de divisão */
+}
+
+.infoFooter p {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* Estilização do link "Entre em contato" */
+.infoFooter a {
+  color: var(--accent); /* Usa a cor de destaque do seu tema (provavelmente o vermelho/vinho das cordas) */
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.infoFooter a:hover {
+  opacity: 0.7;
+  text-decoration: underline; /* Dá um feedback visual quando passa o mouse */
+}

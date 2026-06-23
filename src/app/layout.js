@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
             <ul className="nav-links">
               <li><a href="/">Home</a></li>
               <li><a href="/portfolio">Portfólio</a></li>
-              <li><a href="/workshops">Workshops</a></li>
+              <li><a href="/agenda">Agenda</a></li>
               <li><a href="/lab">Lab</a></li>
               <li><a href="/contato">Contato</a></li>
             </ul>
