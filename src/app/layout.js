@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
               <li><a href="/portfolio">Portfólio</a></li>
               <li><a href="/agenda">Agenda</a></li>
               <li><a href="/lab">Lab</a></li>
+              <li><a href="/loja">Loja</a></li>
               <li><a href="/contato">Contato</a></li>
             </ul>
             <ThemeToggle />
@@ -50,7 +51,7 @@ export default function RootLayout({ children }) {
         <Analytics />
 
         <footer className="main-footer">
-          <p>&copy; {new Date().getFullYear()} Shibari Lab - Mathias. Rio de Janeiro.</p>
+          <p>&copy; {new Date().getFullYear()} Shibari Lab - Rio de Janeiro.</p>
         </footer>
       </body>
     </html>

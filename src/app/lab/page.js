@@ -21,7 +21,7 @@ export default function LabPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1>O Lab</h1>
-        <p>Espaço dedicado a pesquisas, ensaios técnicos e informativos sobre engenharia, arte e Shibari.</p>
+        <p>Espaço dedicado a pesquisas, ensaios técnicos e informativos sobre a arte do shibari.</p>
       </header>
 
       <section className={styles.grid}>
