@@ -5,7 +5,7 @@ export default function ContatoPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1>Contato</h1>
-        <p>Vamos conversar sobre projetos, workshops ou colaborações fotográficas.</p>
+        <p>Vamos conversar sobre projetos, aulas, workshops ou colabs.</p>
       </header>
 
       <div className={styles.content}>
@@ -13,7 +13,7 @@ export default function ContatoPage() {
           <div className={styles.contactCard}>
             <h3>E-mail</h3>
             <p>cordasdomathias@gmail.com</p> 
-            <a href="mailto:cordasdomathias@gmail.com" className={styles.link}>Enviar Mensagem</a>
+            <a href="mailto:cordasdomathias@gmail.com" className={styles.link}> Enviar Mensagem </a>
           </div>
 
           <div className={styles.contactCard}>
@@ -30,7 +30,7 @@ export default function ContatoPage() {
           <h3>Localização</h3>
           <p>Rio de Janeiro, Brasil</p>
           <div className={styles.status}>
-            <span className={styles.dot}></span> Disponível para workshops presenciais
+            <span className={styles.dot}></span> Disponível para workshops presenciais e colabs.
           </div>
         </section>
       </div>

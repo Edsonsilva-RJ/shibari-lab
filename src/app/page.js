@@ -22,7 +22,7 @@ export default function Home() {
         <h1>SHIBARI LAB</h1>
         <p>A intersecção entre a técnica, a estética e a pesquisa.</p>
         <div className={styles.ctaButtons}>
-          <a href="/workshops" className={styles.btnPrimary}>Ver Workshops</a>
+          <a href="/agenda" className={styles.btnPrimary}>Ver Agenda aberta</a>
           <a href="/lab" className={styles.btnSecondary}>Explorar o Lab</a>
         </div>
       </div>

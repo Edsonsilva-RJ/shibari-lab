@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react"; // 1. Importe no topo
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Shibari Lab | Edson',
+  title: 'Shibari Lab | Mathias',
   description: 'Portfólio, Workshops e Pesquisas sobre a arte do Shibari.',
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
             <ul className="nav-links">
               <li><a href="/">Home</a></li>
               <li><a href="/portfolio">Portfólio</a></li>
-              <li><a href="/workshops">Workshops</a></li>
+              <li><a href="/agenda">Agenda</a></li>
               <li><a href="/lab">Lab</a></li>
               <li><a href="/contato">Contato</a></li>
             </ul>
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
         <Analytics />
 
         <footer className="main-footer">
-          <p>&copy; {new Date().getFullYear()} Shibari Lab - Edson. Rio de Janeiro.</p>
+          <p>&copy; {new Date().getFullYear()} Shibari Lab - Mathias. Rio de Janeiro.</p>
         </footer>
       </body>
     </html>

@@ -9,8 +9,8 @@ export default function WorkshopsPage() {
       data: "25 de Abril, 2026",
       horario: "14:00 - 18:00",
       local: "Estúdio Glória, RJ",
-      status: "Inscrições Abertas",
-      formsLink: "https://forms.google.com/seu-link-aqui"
+      status: "Inscrições encerradas",
+      formsLink: ""
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ export default function WorkshopsPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1>Agenda & Workshops</h1>
-        <p>Participe nas oficinas práticas e sessões de estudo coletivo.</p>
+        <p>Fique por dentro da minha agenda aberta e sessões de estudo coletivo.</p>
       </header>
 
       <section className={styles.agendaList}>
@@ -62,7 +62,7 @@ export default function WorkshopsPage() {
       </section>
 
       <footer className={styles.infoFooter}>
-        <p>Tem uma proposta de oficina ou quer um workshop privado? <a href="/contato">Entre em contato</a>.</p>
+        <p>Você tem uma proposta de oficina ou quer um workshop/aula privada? <a href="/contato">Entre em contato</a>.</p>
       </footer>
     </div>
   );
