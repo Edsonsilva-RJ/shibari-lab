@@ -1,6 +1,9 @@
 import styles from './contato.module.css';
 
 export default function ContatoPage() {
+
+  const linkWhatsApp = "https://wa.me/5521994430177?text=Ol%C3%A1%21+Gostaria+de+conversar+sobre+projetos+ou+workshops.";
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -10,6 +13,21 @@ export default function ContatoPage() {
 
       <div className={styles.content}>
         <section className={styles.infoSection}>
+
+          <div className={styles.contactCard}>
+            <h3>WhatsApp</h3>
+      
+            <a 
+              href={linkWhatsApp} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.link}
+              style={{ fontWeight: 'bold', color: 'var(--accent)' }}
+            >
+              Iniciar Conversa no WhatsApp →
+            </a>
+          </div>
+
           <div className={styles.contactCard}>
             <h3>E-mail</h3>
             <p>cordasdomathias@gmail.com</p> 
