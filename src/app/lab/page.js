@@ -11,9 +11,9 @@ export default function LabPage() {
     },
     {
       id: 2,
-      titulo: "A Estética do Shibari no Século XXI",
-      resumo: "Pesquisa sobre a evolução das amarrações e seu impacto visual na fotografia contemporânea.",
-      tag: "Cultura"
+      titulo: "O que é o Shibari? Qual a sua historia ?",
+      resumo: "Para quem vê de fora, o Shibari pode parecer apenas um emaranhado complexo de nós e cordas. Para quem estuda e pratica, ele é uma linguagem.",
+      tag: "Historia e Cultura"
     },
     {
       id: 3,

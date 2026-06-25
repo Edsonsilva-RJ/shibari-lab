@@ -26,12 +26,32 @@ export default async function PesquisaCompletaPage({ params }) {
       ]
     },
     2: {
-      titulo: "A Estética do Shibari no Século XXI",
-      tag: "Cultura",
-      introducao: "Este ensaio explora a evolução técnica das amarras japonesas e como os conceitos de física, engenharia de cordas e fotografia DSLR manual se conectam para criar narrativas visuais contemporâneas.",
+      titulo: "O que é o Shibari? Qual a sua historia ?",
+      tag: "Historia e Cultura",
+      introducao: "Para quem vê de fora, o Shibari pode parecer apenas um emaranhado complexo de nós e cordas. Para quem estuda e pratica, ele é uma linguagem. Mas para entender o que essa arte representa hoje, é preciso desatar os preconceitos do senso comum e fazer uma viagem no tempo.",
       conteudo: [
-        "O Shibari transcendeu seu contexto histórico para se consolidar como uma expressão de arte e performance geométrica. Sob a ótica da fotografia, as linhas criadas pelas cordas funcionam como guias de enquadramento natural, dividindo o espaço e direcionando o olhar do espectador.",
-        "Do ponto de vista físico, a distribuição de carga e o controle milimétrico das tensões nas cordas de juta ou cânhamo são fundamentais. O atrito das fibras determina a estabilidade dos nós, exigindo do aplicador um conhecimento intuitivo de tração, equilíbrio e anatomia, garantindo que a estética ande de mãos dadas com a segurança e o conforto da modelo.",
+        "O que é o Shibari? Qual a sua historia ?",
+        "Para quem vê de fora, o Shibari pode parecer apenas um emaranhado complexo de nós e cordas. Para quem estuda e pratica, ele é uma linguagem. Mas para entender o que essa arte representa hoje, é preciso desatar os preconceitos do senso comum e fazer uma viagem no tempo.",
+
+        "O Shibari não nasceu nos estúdios de arte contemporânea e nem nos quartos de fetiche. Ele nasceu nos campos de batalha do Japão Feudal, por volta do século XIV.",
+
+        "Nessa época, os Samurais e a polícia japonesa não usavam algemas de metal para prender seus prisioneiros; eles usavam cordas (nawa). Esse sistema altamente sofisticado de contenção física e aplicação da lei chamava-se Hojo-jutsu ou Nawajutsu.",
+
+        "O nascimento do Hojo-jutsu também foi uma resposta estratégica à escassez de recursos. Em um Japão feudal — sendo um arquipélago vulcânico, isolado e em guerra constante —, o metal era um recurso precioso e limitado, reservado quase que exclusivamente para a fundição de katanas, lanças, armas num geral e armaduras. Fabricar algemas de metal em larga escala era inviável. Em contrapartida, as fibras naturais estavam abundantemente à mão. Os japoneses transformaram a fibra vegetal em uma arma de contenção leve, barata e inegavelmente versátil.",
+
+        "Diferente do que muitos imaginam, o Hojo-jutsu não era uma técnica de tortura. Havia uma ética rigorosa por trás das amarrações: o prisioneiro deveria ser contido com segurança absoluta para não escapar, e a corda não podia causar danos permanentes à sua circulação ou articulações. Ele precisava chegar intacto ao julgamento e, aí sim, receber sua sentença.",
+
+        "Outra coisa bem interessante é que as amarrações refletiam a estrutura social da época. Um samurai capturado era amarrado com nós complexos e discretos, que escondiam as pontas da corda para preservar sua dignidade e honra. Já um criminoso comum recebia amarrações mais brutas e visíveis. Os nós precisavam ser geometricamente limpos e simétricos. Um nó feio ou mal feito era visto como um sinal de fraqueza técnica e desonra por parte de quem amarrava. Foi exatamente esse cuidado com a geometria, a simetria e o respeito à anatomia que plantou a semente do que viria a seguir.",
+
+        "Com o fim da era dos Samurais e a modernização do Japão, as técnicas de restrição tiveram de mudar. O Hojo-jutsu perdeu sua utilidade prática nas ruas e campos de batalha, mas não desapareceu: ele migrou para os palcos do Teatro Kabuki, encenando o drama e a plasticidade dos prisioneiros capturados, e derivou práticas que hoje conhecemos como Shibari, Kinbaku e Torinawa-jutsu.",
+
+        "No início do século XX, o artista e fotógrafo japonês Seiu Ito (1882–1961) mudou o rumo da história. Ele começou a resgatar os manuais antigos de Hojo-jutsu e a aplicar aquelas amarrações em modelos, registrando tudo em fotografias. Ao fazer isso, Seiu Ito transformou a corda de uma ferramenta de restrição em uma ferramenta de expressão emocional, drama e beleza visual. Ali nascia o Kinbaku moderno, que significa (amarração apertada), focado na conexão, na entrega e no diálogo psicológico entre os praticantes.",
+
+        "Com o passar das décadas, a técnica se espalhou pelo mundo e ganhou o nome de Shibari, que significa literalmente (amarrar).",
+
+        "No século XXI, o Shibari rompeu definitivamente as barreiras dos nichos restritos e das visões puramente sexualizadas. Hoje, ele é reconhecido globalmente como uma vertente de arte contemporânea, performance e intervenção visual. Artistas modernos usam a corda de juta para criar geometrias abstratas no corpo humano, dialogar com a gravidade através de suspensões e até mesmo realizar intervenções na natureza, atando pedras, árvores e transformando cenários inteiros.",
+
+        "Hoje, fazer Shibari é entender de física (vetores de força, fricção e distribuição de carga), de anatomia (preservação de nervos e zonas de risco) e de presença absoluta. A corda deixou de ser um item puramente utilitário para se tornar uma extensão do sentir; uma estrutura viva onde o nó é o ponto de encontro entre a técnica, a segurança e a poesia visual.",
       ],
       links: [
         { texto: "Galeria e Portfólio de Fotografia de Amarras", url: "/portfolio" },
