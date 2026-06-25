@@ -41,6 +41,32 @@ export default async function PesquisaCompletaPage({ params }) {
         "MATHIAS, C. Cordas de Mathias: Técnica e Expressão Visual. Rio de Janeiro: Lab Press, 2025.",
         "RICCI, G. A Arte da Corda: Estética e Prática Ocidental. Lisboa: Edições Corpo, 2022."
       ]
+    },
+    3: {
+      titulo: "Minha inesperada história com o Shibari", 
+      tag: "biografia",
+      introducao: "Hoje percebo que meu primeiro contato foi bem incomum, pois até então, na época em questão, o Shibari não estava tendo tantas intervenções artísticas.",
+      conteudo: [
+        "Minha história com o Shibari começou de uma forma inesperada e até um pouco inusitada.",
+        "Era 2009. Eu estava no meu notebook olhando coisas aleatórias na internet quando, do nada, encontrei uma reportagem que mostrava uma pedra e uma árvore atadas por cordas em uma simetria impecável. Aquela intervenção artística num cenário verde e tranquilo chamou a minha atenção. A reportagem falava de um artista japonês que fazia arte com cordas de uma forma inovadora. Fiquei intrigado: como poderia ser tão inovador fazer arte com cordas? Depois, descobri que o Shibari era muito difundido como uma prática mais sensual feita entre pessoas. Fazer Shibari sem mostrar pessoas era bem incomum. Até ali, para mim, a corda era um item puramente utilitário. Naquele dia, percebi que ela poderia ser poesia visual; poderia ser arte.",
+        "Intrigado e querendo ver aquela estética de perto, comecei a pesquisar. Descobri que aqui no Rio de Janeiro o Shibari existia em eventos voltados ao público BDSM. Aos 19 anos, peguei o transporte e fui a um desses eventos. Sozinho. Meus amigos não quiseram ir, mas desde cedo aprendi uma regra de ouro para a minha vida: se eu quero que algo aconteça, eu preciso ir atrás e fazer acontecer.",
+        "A experiência foi marcante, mas gerou um estranhamento profundo. O Shibari que vi ali, inserido em um contexto estritamente sexualizado, era bonito e excitante, mas não era o que eu buscava. Minha mente ainda estava presa àquela árvore e àquela pedra; eu enxergava a corda como uma manifestação artística abstrata.",
+        "Hoje percebo que meu primeiro contato foi bem incomum, pois até então, na época em questão, o Shibari não estava tendo tantas intervenções artísticas. A maioria das pessoas tem um primeiro contato com um Shibari mais sexualizado, sensualizado.",
+        "Busquei pessoas que ensinassem a técnica, mas nenhuma abordagem alcançava a minha expectativa. Foi então que, com a ousadia típica de um ariano em sua plena juventude, pensei comigo mesmo: Vou aprender sozinho, Quão difícil pode ser aprender a amarrar alguém?.",
+        "Resumindo a história: quebrei a cara.", 
+        "O Shibari provou ser uma das artes mais complexas e profundas que já tentei dominar. Não havia material em português; eu passava noites decifrando vídeos escassos em inglês. Minha primeira corda foi uma de 8 milímetros com 20 metros de comprimento, de algodão, que comprei numa casa de construção no centro do Rio de Janeiro. Demorou para eu conseguir juntar uma grana e comprar minhas primeiras cordas de juta. Meus primeiros nós eram horrorosos. Eu não sabia a espessura correta, não entendia a anatomia das cordas e nem das suas particularidades, nem como gerenciar a tensão. Eu só fui!",
+        "Foram 8 anos quebrando a cabeça em um processo puramente autodidata.",
+        "Hoje, olhando para trás em 2026, vejo que esse caminho árduo e solitário foi o meu maior presente. Foram esses anos de tentativa e erro que me permitiram construir uma identidade própria no Shibari, livre de vícios e cheia de respeito pela técnica. Anos mais tarde, a vida me levou a estudar Engenharia, e toda aquela intuição sobre tração, forças e segurança que desenvolvi na marra com as cordas finalmente ganhou nomes técnicos. Mas a paixão pela estrutura nasceu ali, no chão do quarto, errando o mesmo nó dezenas de vezes.",
+        "O apelido Mathias, que pegou em 2009 por conta de um filme, acabou se tornando o nome que define quem eu sou e como assino o meu trabalho.",
+        "Hoje, o projeto Cordas de Mathias não é apenas o meu portfólio. Este Lab nasceu com a missão de desmistificar, educar e conscientizar. Aqui, eu transformo a minha jornada em conhecimento acessível. Da fabricação artesanal das minhas próprias cordas de juta até a sala de aula onde hoje ensino outras pessoas, meu objetivo permanece o mesmo de quando vi aquela primeira foto: mostrar que a corda é um diálogo, uma estrutura viva e, acima de tudo, arte."],
+      links: [
+        { texto: "Galeria e Portfólio de Fotografia de Amarras", url: "/portfolio" },
+        { texto: "Estudos de Tensão e Geometria da Amarra", url: "#" }
+      ],
+      //referencias: [
+        //"MATHIAS, C. Cordas de Mathias: Técnica e Expressão Visual. Rio de //Janeiro: Lab Press, 2025.",
+        //"RICCI, G. A Arte da Corda: Estética e Prática Ocidental. Lisboa: Edições Corpo, 2022."
+      //]
     }
   };
 

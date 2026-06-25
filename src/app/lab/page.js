@@ -14,6 +14,12 @@ export default function LabPage() {
       titulo: "A Estética do Shibari no Século XXI",
       resumo: "Pesquisa sobre a evolução das amarrações e seu impacto visual na fotografia contemporânea.",
       tag: "Cultura"
+    },
+    {
+      id: 3,
+      titulo: "Minha inesperada história com o Shibari",
+      resumo: "Era 2009. Eu estava no meu notebook olhando coisas aleatórias na internet quando, do nada...",
+      tag: "Biografia"
     }
   ];
 
