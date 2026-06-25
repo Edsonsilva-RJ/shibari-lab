@@ -3,24 +3,24 @@ import styles from './workshops.module.css';
 export default function WorkshopsPage() {
   // Lista de eventos - Você pode atualizar as datas aqui facilmente
   const eventos = [
-    {
-      id: 1,
-      titulo: "Introdução às Amarras de Chão",
-      data: "25 de Abril, 2026",
-      horario: "14:00 - 18:00",
-      local: "Estúdio Glória, RJ",
-      status: "Inscrições encerradas",
-      formsLink: "#"
-    },
-    {
-      id: 2,
-      titulo: "Workshop de Fotografia e Performance",
-      data: "10 de Maio, 2026",
-      horario: "09:00 - 13:00",
-      local: "Santa Teresa, RJ",
-      status: "Brevemente",
-      formsLink: "#"
-    }
+    // {
+    //   id: 1,
+    //   titulo: "Introdução às Amarras de Chão",
+    //   data: "25 de Abril, 2026",
+    //   horario: "14:00 - 18:00",
+    //   local: "Estúdio Glória, RJ",
+    //   status: "Inscrições encerradas",
+    //   formsLink: "#"
+    // },
+    // {
+    //   id: 2,
+    //   titulo: "Workshop de Fotografia e Performance",
+    //   data: "10 de Maio, 2026",
+    //   horario: "09:00 - 13:00",
+    //   local: "Santa Teresa, RJ",
+    //   status: "Brevemente",
+    //   formsLink: "#"
+    // }
   ];
 
   return (
