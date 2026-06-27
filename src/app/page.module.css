@@ -115,3 +115,21 @@
     padding: 0 1rem;
   }
 }
+/* Procure por essa parte que já existe no seu page.module.css e ajuste o margin-bottom */
+@media (max-width: 768px) {
+  .heroContent h1 {
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+  }
+  
+  .heroContent p {
+    font-size: 1rem;
+    margin-bottom: 1.8rem; /* Reduzido de 2.5rem para os botões subirem um pouco e respirarem */
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+}
