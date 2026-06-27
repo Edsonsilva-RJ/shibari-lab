@@ -3,7 +3,8 @@ import Script from 'next/script';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import ThemeToggle from '../components/ThemeToggle';
-import { Analytics } from "@vercel/analytics/react"; // 1. Importe no topo
+import AgeGate from '../components/AgeGate'; // Importação do filtro de idade
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,12 +15,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    /* A ADIÇÃO DA PROPRIEDADE ABAIXO É A CHAVE:
-       suppressHydrationWarning diz ao React para ignorar a diferença de atributos 
-       na tag html causada pelo nosso script de tema.
-    */
     <html lang="pt-br" suppressHydrationWarning>
       <body className={inter.className}>
+        {/* Filtro de idade posicionado no topo para rodar imediatamente */}
+        <AgeGate />
+
         <Script id="theme-strategy" strategy="beforeInteractive">
           {`
             (function() {

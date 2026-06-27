@@ -1,6 +1,8 @@
+/* src/app/portfolio/portfolio.module.css */
+
 .container {
   max-width: 1200px;
-  margin: 4rem auto;
+  margin: 6rem auto 4rem auto; /* Alinhado com o novo cabeçalho mobile */
   padding: 0 2rem;
 }
 
@@ -18,38 +20,245 @@
 
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
 }
 
 .photoCard {
-  position: relative;
-  overflow: hidden;
   background-color: var(--card-bg);
-  border-radius: 4px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .photoCard:hover {
-  transform: scale(1.02);
+  transform: translateY(-4px);
 }
 
 .imageWrapper {
-  aspect-ratio: 3 / 4; /* Proporção clássica de fotografia */
+  aspect-ratio: 3 / 4;
   position: relative;
+  overflow: hidden;
 }
 
 .image {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  transition: transform 0.5s ease;
+}
+
+/* Efeito de surgimento ao passar o mouse na capa */
+.hoverOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photoCard:hover .hoverOverlay {
+  opacity: 1;
+}
+
+.photoCard:hover .image {
+  transform: scale(1.03);
 }
 
 .photoInfo {
-  padding: 1rem;
-  text-align: center;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.photoInfo h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 1px;
+}
+
+.photoInfo p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   ESTILIZAÇÃO DO MODAL / LIGHTBOX
+   ========================================== */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 10, 0.95); /* Fundo bem escuro para focar na foto */
+  z-index: 2000; /* Fica acima do menu fixo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 80vw; /* Diminuído ligeiramente para dar mais respiro nas laterais */
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxImage {
+  max-height: 50vh; /* Acompanha o container para não vazar */
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.lightboxCounter {
+  color: #aaa;
   font-size: 0.8rem;
+  margin-top: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+/* Botões de Controle */
+.btnClose, .btnNavLeft, .btnNavRight {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
   opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 1rem;
+}
+
+.btnClose:hover, .btnNavLeft:hover, .btnNavRight:hover {
+  opacity: 1;
+}
+
+.btnClose {
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 3.5rem;
+}
+
+.btnNavLeft { left: 2rem; }
+.btnNavRight { right: 2rem; }
+
+@media (max-width: 768px) {
+  .btnNavLeft { left: 0.5rem; font-size: 2rem; }
+  .btnNavRight { right: 0.5rem; font-size: 2rem; }
+  .btnClose { top: 0.5rem; right: 1rem; }
+}
+/* Adicione no final do seu arquivo portfolio.module.css */
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 50vh; /* Reduzido de 55vh para garantir que o texto abaixo caiba perfeitamente */
+  width: 100%;
+}
+
+.lightboxFooter {
+  width: 100%;
+  max-width: 100%; /* Ocupa exatamente a largura da imagem acima */
+  margin-top: 1rem; /* Espaço sutil entre a foto e o início do texto */
+  padding: 1.5rem;
+  background-color: var(--card-bg); /* Usa o padrão do tema para manter consistência */
+  border-top: 1px solid rgba(210, 180, 140, 0.2);
+  border-radius: 0 0 6px 6px; /* Arredonda apenas os cantos de baixo */
+}
+
+.footerMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.footerMain h3 {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.counter {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  font-weight: bold;
+}
+
+.workSummary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+/* Ajuste fino para a grid de créditos não quebrar os nomes */
+.creditsGrid {
+  display: flex;
+  flex-wrap: wrap; /* Em computadores fica em linha, em telas menores quebra */
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.8rem;
+  opacity: 0.9;
+}
+
+.creditsGrid strong {
+  color: var(--accent); /* Destaque na cor dourada/tan da corda */
+}
+
+/* Ajuste específico para celulares não cortarem o texto */
+@media (max-width: 768px) {
+  .lightboxContent {
+    max-height: 90vh;
+    justify-content: flex-start;
+    overflow-y: auto; /* Permite rolar os créditos se a tela for muito baixa */
+    padding-bottom: 2rem;
+  }
+  
+  .imageContainer {
+    max-height: 40vh;
+  }
+
+  .lightboxFooter {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .footerMain h3 {
+    font-size: 1.1rem;
+  }
+
+  .workSummary {
+    font-size: 0.85rem;
+  }
+
+  .creditsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .creditsGrid div {
+  white-space: nowrap; /* Impede que "Edson Henrique" quebre em duas linhas */
+}
 }
