@@ -9,20 +9,27 @@ export default async function PesquisaCompletaPage({ params }) {
   // "Banco de dados" dos seus artigos completos
   const artigos = {
     1: {
-      titulo: "Energia Fotovoltaica e Sustentabilidade",
-      tag: "Engenharia",
-      introducao: "Uma análise técnica aprofundada sobre a viabilidade e o dimensionamento de sistemas solares fotovoltaicos residenciais em ambientes urbanos, com foco na eficiência energética baseada nas normas vigentes (NBR 5410).",
+      titulo: "Lorem Ipsum",
+      tag: "teste",
+      introducao: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       conteudo: [
-        "A busca por fontes de energia renováveis tem deixado de ser apenas uma alternativa ecológica e se tornado uma necessidade estrutural urbana. No cenário atual, os sistemas fotovoltaicos conectados à rede (on-grid) representam a tecnologia mais viável para a transição energética residencial.",
-        "Para um dimensionamento correto, é essencial analisar o índice de irradiação solar local e a média de consumo em quilowatts-hora (kWh) da residência. Cabos com isolamento adequado (como condutores de 10mm para altas correntes) e dispositivos de proteção como disjuntores e DPS são críticos para evitar quedas de tensão e garantir a segurança do sistema contra surtos atmosféricos.",
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
       ],
       links: [
-        { texto: "Simulador de Potência Solar (CRESESB)", url: "http://www.cresesb.cepel.br" },
-        { texto: "Consulta de Irradiação Solar no Rio de Janeiro", url: "#" }
+        { texto: "O que é Lorem Ipsum?", url: "https://br.lipsum.com/" },
+        { texto: "Lorem Ipsum usado", url: "https://loremipsum.io/generator/?n=5&t=p" }
       ],
       referencias: [
-        "ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. NBR 5410: Instalações elétricas de baixa tensão. Rio de Janeiro, 2004.",
-        "COELHO, S. T. Energia Solar Fotovoltaica no Brasil: Desafios e Perspectivas. São Paulo: Editora Técnica, 2024."
+        "Silva, E. H.Coisas não tão aleatorias que aprendi: Uma reflexão sobre coisas que você nem procurou saber. Rio de Janeiro, 2018.",
+    
       ]
     },
     2: {
@@ -54,12 +61,11 @@ export default async function PesquisaCompletaPage({ params }) {
         "Hoje, fazer Shibari é entender de física (vetores de força, fricção e distribuição de carga), de anatomia (preservação de nervos e zonas de risco) e de presença absoluta. A corda deixou de ser um item puramente utilitário para se tornar uma extensão do sentir; uma estrutura viva onde o nó é o ponto de encontro entre a técnica, a segurança e a poesia visual.",
       ],
       links: [
-        { texto: "Galeria e Portfólio de Fotografia de Amarras", url: "/portfolio" },
-        { texto: "Estudos de Tensão e Geometria da Amarra", url: "#" }
+        { texto: "Galeria e Portfólio de Fotografia de Amarras", url: "/portfolio" }
+
       ],
       referencias: [
-        "MATHIAS, C. Cordas de Mathias: Técnica e Expressão Visual. Rio de Janeiro: Lab Press, 2025.",
-        "RICCI, G. A Arte da Corda: Estética e Prática Ocidental. Lisboa: Edições Corpo, 2022."
+        "MATHIAS, C. Cordas de Mathias: Técnica e Expressão Visual. Rio de Janeiro: Lab Press, 2030."
       ]
     },
     3: {
@@ -80,13 +86,11 @@ export default async function PesquisaCompletaPage({ params }) {
         "O apelido Mathias, que pegou em 2009 por conta de um filme, acabou se tornando o nome que define quem eu sou e como assino o meu trabalho.",
         "Hoje, o projeto Cordas de Mathias não é apenas o meu portfólio. Este Lab nasceu com a missão de desmistificar, educar e conscientizar. Aqui, eu transformo a minha jornada em conhecimento acessível. Da fabricação artesanal das minhas próprias cordas de juta até a sala de aula onde hoje ensino outras pessoas, meu objetivo permanece o mesmo de quando vi aquela primeira foto: mostrar que a corda é um diálogo, uma estrutura viva e, acima de tudo, arte."],
       links: [
-        { texto: "Galeria e Portfólio de Fotografia de Amarras", url: "/portfolio" },
-        { texto: "Estudos de Tensão e Geometria da Amarra", url: "#" }
+        { texto: "Galeria e Portfólio de Fotografia de Amarras", url: "/portfolio" }
       ],
-      //referencias: [
-        //"MATHIAS, C. Cordas de Mathias: Técnica e Expressão Visual. Rio de //Janeiro: Lab Press, 2025.",
-        //"RICCI, G. A Arte da Corda: Estética e Prática Ocidental. Lisboa: Edições Corpo, 2022."
-      //]
+      referencias: [
+        "MATHIAS, C. Cordas de Mathias: Técnica e Expressão Visual. Rio de //Janeiro: Lab Press, 2035."]
+      
     }
   };
 
