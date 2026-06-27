@@ -37,11 +37,53 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Indica que o card inteiro é clicável */
 }
 
 .productCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-color: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.productImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.05);
+}
+
+/* Efeito de surgimento com o número de fotos ao passar o mouse */
+.hoverOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.productCard:hover .hoverOverlay {
+  opacity: 1;
 }
 
 .productInfo {
@@ -79,17 +121,19 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+  gap: 0.5rem;
 }
 
 .price {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--foreground);
+  white-space: nowrap; /* IMPEDE A QUEBRA DO R$ E VALOR */
 }
 
 .btnBuy {
   background-color: var(--accent);
-  color: #fff;
+  color: #fff !important; /* Garante que o texto do botão é sempre branco */
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -103,31 +147,185 @@
   opacity: 0.9;
 }
 
+/* =======================================================
+   ESTILIZAÇÃO GLOBAL DO MODAL / LIGHTBOX (Disponível em qualquer tela)
+   ======================================================= */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 10, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 80vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 45vh;
+  width: 100%;
+}
+
+.lightboxImage {
+  max-height: 45vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* CORREÇÃO DO MODAL: Sincroniza o fundo e herda a cor correta de texto com base no tema */
+.lightboxFooter {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-top: 1px solid rgba(210, 180, 140, 0.2);
+  border-radius: 6px;
+  color: var(--foreground); /* Troca o cinza fixo pela variável de texto dinâmico */
+}
+
+.footerMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+/* CORREÇÃO CONTRASTE: Título do modal herda a cor correta do tema ativo */
+.footerMain h3 {
+  font-size: 1.2rem;
+  color: var(--foreground); 
+}
+
+.counter {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.modalDescription {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.8;
+  margin-bottom: 1.2rem;
+}
+
+.modalFooterRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1rem;
+}
+
+/* CORREÇÃO CONTRASTE: Preço do modal herda a cor correta do tema ativo */
+.modalPrice {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--foreground); 
+}
+
+.btnClose, .btnNavLeft, .btnNavRight {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 1rem;
+  z-index: 2100;
+}
+
+.btnClose:hover, .btnNavLeft:hover, .btnNavRight:hover {
+  opacity: 1;
+}
+
+.btnClose { top: 1.5rem; right: 2rem; font-size: 3.5rem; }
+.btnNavLeft { left: 2rem; }
+.btnNavRight { right: 2rem; }
+
+/* =======================================================
+   MEDIA QUERY EXCLUSIVA PARA DISPOSITIVOS MÓVEIS
+   ======================================================= */
 @media (max-width: 768px) {
   .container {
-    margin-top: 5rem;
+    margin-top: 7rem; /* Compensa o menu mobile de duas linhas */
   }
   
   .grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.2rem;
   }
+
+  .productInfo {
+    padding: 1rem;
+  }
+
+  .productInfo h2 {
+    font-size: 1.1rem;
+  }
+
+  /* CORREÇÃO MOBILE: Alinha preço e botão lado a lado sem quebras */
+  .footerRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.2rem;
+  }
+
+  .price {
+    font-size: 1.05rem;
+  }
+
+  .btnBuy {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  /* Ajustes finos do Lightbox no celular */
+  .lightboxContent {
+    max-height: 85vh;
+    overflow-y: auto;
+    width: 90vw;
+  }
+  .imageContainer, .lightboxImage { max-height: 35vh; }
+  .btnNavLeft { left: 0.2rem; font-size: 2rem; }
+  .btnNavRight { right: 0.2rem; font-size: 2rem; }
+  .btnClose { top: 0.5rem; right: 0.5rem; font-size: 2.5rem; }
+  .lightboxFooter { padding: 1rem; }
+  .footerMain h3 { font-size: 1rem; }
+  .modalPrice { font-size: 1.2rem; }
 }
-/* Espaço reservado para a imagem no topo do card */
-.imageWrapper {
-  position: relative;
-  width: 100%;
-  height: 220px; /* Altura fixa ideal para destacar o produto */
-  background-color: rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+/* Força total de contraste para qualquer elemento de texto dentro do rodapé do modal */
+.lightboxFooter h3,
+.lightboxFooter p,
+.lightboxFooter span,
+.lightboxFooter div {
+  color: var(--foreground) !important;
 }
 
-.productImage {
-  object-fit: cover; /* Faz a foto preencher o espaço sem distorcer */
-  transition: transform 0.5s ease;
-}
-
-/* Efeito de zoom sutil na foto quando passas o rato no card */
-.productCard:hover .productImage {
-  transform: scale(1.05);
+/* Garante que o texto dentro do botão de compra continue sempre visível (branco) */
+.lightboxFooter .btnBuy,
+.footerRow .btnBuy {
+  color: #ffffff !important;
 }

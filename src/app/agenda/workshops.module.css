@@ -107,3 +107,17 @@
   opacity: 0.7;
   text-decoration: underline; /* Dá um feedback visual quando passa o mouse */
 }
+/* Estilização para quando não há workshops agendados */
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--card-bg); /* Sintonizado com o tema claro/escuro */
+  border: 1px dashed rgba(210, 180, 140, 0.3); /* Linha tracejada sutil usando o tom de corda */
+  border-radius: 8px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 2rem auto;
+  letter-spacing: 0.5px;
+}

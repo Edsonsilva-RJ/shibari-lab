@@ -98,3 +98,50 @@ main {
   font-size: 0.8rem;
   opacity: 0.6;
 }
+/* =======================================================
+   CORREÇÃO DEFINITIVA DO MENU PARA PROPORÇÕES DE CELULAR
+   ======================================================= */
+@media (max-width: 768px) {
+  /* 1. Modifica o container para organizar os blocos em coluna */
+  .nav-container {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  /* 2. Permite que o logo e o botão de tema fiquem alinhados na primeira linha */
+  .main-header {
+    padding: 0.8rem 1rem;
+  }
+  
+  /* Se houver um wrapper para o logo e o botão de tema no seu HTML, ele se beneficia disso.
+     Caso contrário, forçamos os links a ocuparem a linha de baixo com largura total */
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; /* Caso a tela seja muito pequena, eles quebram entre si sem sumir */
+    gap: 0.8rem;
+    padding-top: 0.2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.2rem 0.4rem;
+  }
+
+  /* Garante que o logo ocupe o topo sem misturar com o texto */
+  .logo {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+/* Compensação de altura: Como o header agora tem duas linhas no mobile, 
+   precisamos aumentar o recuo do elemento principal para não cobrir o conteúdo */
+@media (max-width: 768px) {
+  main {
+    margin-top: 110px !important;
+  }
+}

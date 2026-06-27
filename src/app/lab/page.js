@@ -5,9 +5,9 @@ export default function LabPage() {
   const pesquisas = [
     {
       id: 1,
-      titulo: "Energia Fotovoltaica e Sustentabilidade",
-      resumo: "Uma análise técnica sobre a implementação de painéis solares em áreas urbanas.",
-      tag: "Engenharia"
+      titulo: "Lorem Ipsum",
+      resumo: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. ",
+      tag: "teste"
     },
     {
       id: 2,
