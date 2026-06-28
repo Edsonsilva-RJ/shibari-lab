@@ -33,7 +33,9 @@ export default function RootLayout({ children }) {
 
         <header className="main-header">
           <nav className="nav-container">
-            <div className="logo">Shibari Lab</div>
+            <div className="logo">
+              SHIBARI <span>LAB</span>
+            </div>
             <ul className="nav-links">
               <li><a href="/">Home</a></li>
               <li><a href="/portfolio">Portfólio</a></li>
