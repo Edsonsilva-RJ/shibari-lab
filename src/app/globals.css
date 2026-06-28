@@ -144,4 +144,7 @@ main {
   main {
     margin-top: 110px !important;
   }
+  body {
+    padding-top: 30px !important; 
+  }
 }
