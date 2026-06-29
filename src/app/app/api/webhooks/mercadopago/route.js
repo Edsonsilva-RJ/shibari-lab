@@ -3,11 +3,14 @@ import { NextResponse } from 'next/server';
 import { MercadoPagoConfig, Payment } from 'mercadopago';
 import { Resend } from 'resend';
 
-// Inicializa as ferramentas seguras com variáveis de ambiente
+// Inicializa o Mercado Pago de forma segura com a variável de ambiente
 const client = new MercadoPagoConfig({
   accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN || ''
 });
-const resend = new Resend(process.env.RESEND_API_KEY || '');
+
+// CORREÇÃO: Passa um formato simulado idêntico a uma chave real para evitar quebras no build estático
+const apiKey = process.env.RESEND_API_KEY || 're_1234567890placeholder_build_key';
+const resend = new Resend(apiKey);
 
 export async function POST(request) {
   try {
@@ -44,7 +47,7 @@ export async function POST(request) {
         // 4. Disparamos o e-mail de notificação para você
         await resend.emails.send({
           from: 'Loja Cordas de Mathias <onboarding@resend.dev>', // No início usa o domínio padrão de teste deles
-          to: 'seu-email-aqui@gmail.com', // Coloque o e-mail onde você deseja receber os alertas de venda
+          to: 'seu-email-aqui@gmail.com', // ⚠️ IMPORTANTE: Altere para o e-mail onde você quer receber os alertas!
           subject: `🚨 NOVO PEDIDO APROVADO - R$ ${totalPago.toFixed(2)}`,
           html: `
             <div style="font-family: sans-serif; max-width: 600px; color: #333;">
@@ -91,7 +94,7 @@ export async function POST(request) {
 
   } catch (error) {
     console.error("Erro ao processar Webhook do Mercado Pago:", error);
-    // Mesmo se der erro no nosso envio de e-mail, devolvemos 200 para o Mercado Pago não ficar bombardeando o servidor
+    // CORREÇÃO: Retorna uma resposta válida mesmo em caso de erro para fechar a requisição com segurança
     return new Response('Erro Interno Tratado', { status: 200 });
   }
 }
