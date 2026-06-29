@@ -11,11 +11,14 @@ export default function LojaPage() {
   const [produtoAtivoIndex, setProdutoAtivoIndex] = useState(-1);
   const [fotoAtualIndex, setFotoAtualIndex] = useState(0);
 
-  // Estado do Carrinho de Compras e Visibilidade da gaveta do carrinho
+  // Estado do Carrinho de Compras e Visibilidade da gaveta
   const [carrinho, setCarrinho] = useState([]);
   const [carrinhoAberto, setCarrinhoAberto] = useState(false);
 
-  // Inicializa o carrinho com dados salvos no navegador (se existirem)
+  // NOVO: Estado para a categoria ativa no filtro
+  const [categoriaAtiva, setCategoriaAtiva] = useState("Todos");
+
+  // Inicializa o carrinho com dados salvos no navegador
   useEffect(() => {
     const carrinhoSalvo = localStorage.getItem('cordas_mathias_cart');
     if (carrinhoSalvo) {
@@ -33,7 +36,7 @@ export default function LojaPage() {
     localStorage.setItem('cordas_mathias_cart', JSON.stringify(novoCarrinho));
   };
 
-  // Catálogo com os 7 itens atualizados com Status de Estoque e Quantidades limites
+  // Catálogo com os 7 itens cadastrados
   const produtos = [
     {
       id: 1,
@@ -65,7 +68,7 @@ export default function LojaPage() {
       descricao: "Combo ideal para quem está iniciando: duas cordas de juta tratadas de 8m e uma tesoura de ponta romba (ponta redonda) para cortes seguros e rápidos nos momentos de emergência.",
       preco: 165.00,
       status: "Sob demanda",
-      quantidadeDisponivel: 99, // Produção ilimitada sob demanda
+      quantidadeDisponivel: 99,
       galeria: ["opcao1"] 
     },
     {
@@ -73,7 +76,7 @@ export default function LojaPage() {
       titulo: "Corda de Juta colorida Tratada - 8m / 5.5mm",
       categoria: "Equipamento",
       imagem: "", 
-      descricao: "Corda de juta tingida de alta qualidade, tratada com óleo de jojoba e cera de abelha. Pronta para uso em amarras de chão ou suspensões.",
+      descricao: "Corda de juta temporariamente tingida de alta qualidade, tratada com óleo de jojoba e cera de abelha. Pronta para uso em amarras de chão ou suspensões.",
       preco: 115.00,
       status: "Sob demanda",
       quantidadeDisponivel: 99,
@@ -114,9 +117,20 @@ export default function LojaPage() {
     }
   ];
 
+  // NOVO: Extração dinâmica das categorias únicas existentes no catálogo
+  const categoriasDisponiveis = ["Todos", ...new Set(produtos.map(p => p.categoria))];
+
+  // NOVO: Filtragem dos produtos que serão de fato exibidos na tela
+  const produtosFiltrados = categoriaAtiva === "Todos" 
+    ? produtos 
+    : produtos.filter(produto => produto.categoria === categoriaAtiva);
+
   // Funções da Galeria Lightbox
-  const abrirLightbox = (index) => {
-    setProdutoAtivoIndex(index);
+  const abrirLightbox = (indexInFiltrados) => {
+    // Encontra o index real no array original de produtos para não quebrar o modal
+    const produtoSelecionado = produtosFiltrados[indexInFiltrados];
+    const indexReal = produtos.findIndex(p => p.id === produtoSelecionado.id);
+    setProdutoAtivoIndex(indexReal);
     setFotoAtualIndex(0);
   };
 
@@ -134,9 +148,9 @@ export default function LojaPage() {
     setFotoAtualIndex((prev) => (prev - 1 + galeria.length) % galeria.length);
   };
 
-  // Lógica de Manipulação do Carrinho de Compras
+  // Funções do Carrinho
   const adicionarAoCarrinho = (e, produto) => {
-    e.stopPropagation(); // Evita abrir o modal ao clicar no botão
+    e.stopPropagation();
     if (produto.status === "Não disponível") return;
 
     const itemExistente = carrinho.find(item => item.id === produto.id);
@@ -153,7 +167,7 @@ export default function LojaPage() {
     } else {
       salvarCarrinho([...carrinho, { ...produto, quantidade: 1 }]);
     }
-    setCarrinhoAberto(true); // Abre a barra lateral do carrinho para dar feedback
+    setCarrinhoAberto(true);
   };
 
   const alterarQuantidade = (id, delta, maxDisponivel, status) => {
@@ -177,19 +191,13 @@ export default function LojaPage() {
     salvarCarrinho(carrinhoFiltrado);
   };
 
-  // Cálculo de totais
   const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
   const valorTotal = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
 
-  // Redirecionamento seguro para a tela de checkout / confirmação de dados
   const prosseguirParaCheckout = () => {
-    // Aqui no futuro faremos a chamada à API do Stripe / Mercado Pago criando um Session Checkout seguro.
-    // Por enquanto, podemos estruturar o redirecionamento ou exibir um aviso controlado.
     alert("Redirecionando de forma segura para a verificação de cadastro, confirmação de pedido e gateway de pagamentos com criptografia SSL...");
-    // window.location.href = "/loja/checkout";
   };
 
-  // Função auxiliar para renderizar as tags de status estilizadas
   const renderBadgeStatus = (status) => {
     if (status === "Pronta entrega") return <span className={`${styles.badge} ${styles.badgePronta}`}>Pronta Entrega</span>;
     if (status === "Sob demanda") return <span className={`${styles.badge} ${styles.badgeDemanda}`}>Sob Demanda</span>;
@@ -207,8 +215,22 @@ export default function LojaPage() {
         </button>
       </header>
 
+      {/* NOVO: Barra de Filtros por Categoria */}
+      <nav className={styles.filterNav}>
+        {categoriasDisponiveis.map((cat) => (
+          <button
+            key={cat}
+            className={`${styles.filterBtn} ${categoriaAtiva === cat ? styles.filterBtnActive : ''}`}
+            onClick={() => setCategoriaAtiva(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </nav>
+
       <main className={styles.grid}>
-        {produtos.map((produto, index) => {
+        {/* MODIFICADO: Mapeia o array já filtrado ao invés do estático */}
+        {produtosFiltrados.map((produto, index) => {
           const imagemExibida = produto.imagem || ID_IMAGEM_PADRAO;
           
           return (
@@ -259,7 +281,7 @@ export default function LojaPage() {
         })}
       </main>
 
-      {/* Gaveta / Sidebar Lateral do Carrinho de Compras */}
+      {/* Gaveta / Sidebar Lateral do Carrinho */}
       {carrinhoAberto && (
         <div className={styles.cartOverlay} onClick={() => setCarrinhoAberto(false)}>
           <div className={styles.cartSidebar} onClick={(e) => e.stopPropagation()}>

@@ -552,3 +552,55 @@
   .footerMain h3 { font-size: 1rem; }
   .modalPrice { font-size: 1.2rem; }
 }
+
+/* =======================================================
+   NOVO: BARRA DE FILTROS POR CATEGORIA
+   ======================================================= */
+.filterNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--foreground);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+}
+
+.filterBtn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+}
+
+.filterBtnActive {
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajuste sutil para o mobile na área dos filtros */
+@media (max-width: 768px) {
+  .filterNav {
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+  
+  .filterBtn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
