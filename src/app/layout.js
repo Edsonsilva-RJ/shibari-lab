@@ -52,6 +52,7 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
 
         <Analytics />
+        <SpeedInsights />
 
         <footer className="main-footer">
           <p>&copy; {new Date().getFullYear()} Shibari Lab - Rio de Janeiro.</p>
