@@ -1,17 +1,39 @@
 // src/app/loja/page.js
 "use client"; 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CldImage } from 'next-cloudinary';
 import styles from './loja.module.css';
 
 export default function LojaPage() {
   const ID_IMAGEM_PADRAO = "opcao1"; 
 
-  // Estados para controlar qual produto está aberto e qual foto da galeria está ativa
+  // Estados do Modal / Lightbox
   const [produtoAtivoIndex, setProdutoAtivoIndex] = useState(-1);
   const [fotoAtualIndex, setFotoAtualIndex] = useState(0);
 
-  // Seu catálogo completo com os 7 itens estruturados
+  // Estado do Carrinho de Compras e Visibilidade da gaveta do carrinho
+  const [carrinho, setCarrinho] = useState([]);
+  const [carrinhoAberto, setCarrinhoAberto] = useState(false);
+
+  // Inicializa o carrinho com dados salvos no navegador (se existirem)
+  useEffect(() => {
+    const carrinhoSalvo = localStorage.getItem('cordas_mathias_cart');
+    if (carrinhoSalvo) {
+      try {
+        setCarrinho(JSON.parse(carrinhoSalvo));
+      } catch (e) {
+        console.error("Erro ao carregar carrinho", e);
+      }
+    }
+  }, []);
+
+  // Salva o carrinho localmente sempre que sofrer mutações
+  const salvarCarrinho = (novoCarrinho) => {
+    setCarrinho(novoCarrinho);
+    localStorage.setItem('cordas_mathias_cart', JSON.stringify(novoCarrinho));
+  };
+
+  // Catálogo com os 7 itens atualizados com Status de Estoque e Quantidades limites
   const produtos = [
     {
       id: 1,
@@ -19,8 +41,9 @@ export default function LojaPage() {
       categoria: "Equipamento",
       imagem: "", 
       descricao: "Corda de juta natural de alta qualidade, tratada com óleo de jojoba e cera de abelha. Pronta para uso em amarrações de chão ou suspensões.",
-      preco: "R$ 75,00",
-      linkWhats: "https://wa.me/5521994430177?text=Ol%C3%A1%21+Tenho+interesse+na+Corda+de+Juta+Tratada+de+8m",
+      preco: 75.00,
+      status: "Pronta entrega",
+      quantidadeDisponivel: 5,
       galeria: ["opcao1", "hero-bg_fpjh2t"] 
     },
     {
@@ -29,18 +52,20 @@ export default function LojaPage() {
       categoria: "Manutenção",
       imagem: "", 
       descricao: "Cera hidratante ideal para cordas de fibra natural, feita com ingredientes pensados para mantém a corda hidratada, flexível e resistente.",
-      preco: "R$ 35,00",
-      linkWhats: "https://wa.me/5521994430177?text=Ol%C3%A1%21+Tenho+interesse+na+Cera+hidratante+para+cordas",
+      preco: 35.00,
+      status: "Pronta entrega",
+      quantidadeDisponivel: 12,
       galeria: ["opcao1", "hero-bg_fpjh2t"] 
     },
     {
       id: 3,
       titulo: "Kit iniciante: 2 Cordas + Tesoura de ponta romba",
       categoria: "Kit",
-      imagem: "", // Puxa a imagem padrão automaticamente
+      imagem: "", 
       descricao: "Combo ideal para quem está iniciando: duas cordas de juta tratadas de 8m e uma tesoura de ponta romba (ponta redonda) para cortes seguros e rápidos nos momentos de emergência.",
-      preco: "R$ 165,00",
-      linkWhats: "https://wa.me/5521994430177?text=Ol%C3%A1%21+Tenho+interesse+no+Kit+Principiante",
+      preco: 165.00,
+      status: "Sob demanda",
+      quantidadeDisponivel: 99, // Produção ilimitada sob demanda
       galeria: ["opcao1"] 
     },
     {
@@ -48,9 +73,10 @@ export default function LojaPage() {
       titulo: "Corda de Juta colorida Tratada - 8m / 5.5mm",
       categoria: "Equipamento",
       imagem: "", 
-      descricao: "Corda de juta tingida de alta qualidade, tratada com óleo de jojoba e cera de abelha. Pronta para uso em  amarras de chão ou suspensões.",
-      preco: "R$ 115,00",
-      linkWhats: "https://wa.me/5521994430177?text=Ol%C3%A1%21+Tenho+interesse+no+Print+Fotogr%C3%A1fico+Linhas+de+Tens%C3%A3o",
+      descricao: "Corda de juta tingida de alta qualidade, tratada com óleo de jojoba e cera de abelha. Pronta para uso em amarras de chão ou suspensões.",
+      preco: 115.00,
+      status: "Sob demanda",
+      quantidadeDisponivel: 99,
       galeria: ["opcao1"] 
     },
     {
@@ -59,8 +85,9 @@ export default function LojaPage() {
       categoria: "Manutenção",
       imagem: "", 
       descricao: "Cera hidratante premium ideal para cordas de fibra natural, feita com ingredientes 100% organicos pensados para manter a corda hidratada, flexível e resistente.",
-      preco: "R$ 45,25",
-      linkWhats: "https://wa.me/5521994430177?text=Ol%C3%A1%21+Tenho+interesse+na+cera+hidratante+premium+para+cordas",
+      preco: 45.25,
+      status: "Pronta entrega",
+      quantidadeDisponivel: 3,
       galeria: ["opcao1"] 
     },
     {
@@ -69,8 +96,9 @@ export default function LojaPage() {
       categoria: "Kit",
       imagem: "", 
       descricao: "Combo ideal para quem está iniciando: duas cordas de juta tratadas de 8m, cera hidratante 50Gr e uma tesoura de ponta romba (ponta redonda) para cortes seguros e rápidos nos momentos de emergência.",
-      preco: "R$ 195,00",
-      linkWhats: "https://wa.me/5521994430177?text=Ol%C3%A1%21+Tenho+interesse+no+Kit+iniciante+II",
+      preco: 195.00,
+      status: "Não disponível",
+      quantidadeDisponivel: 0,
       galeria: ["opcao1"] 
     },
     {
@@ -79,20 +107,20 @@ export default function LojaPage() {
       categoria: "Equipamento",
       imagem: "", 
       descricao: "tesoura de ponta romba (ponta redonda) para cortes seguros e rápidos nos momentos de emergência.",
-      preco: "R$ 25,00",
-      linkWhats: "https://wa.me/5521994430177?text=Ol%C3%A1%21+Tenho+interesse+na+Tesoura+de+ponta+romba",
+      preco: 25.00,
+      status: "Pronta entrega",
+      quantidadeDisponivel: 8,
       galeria: ["opcao1"] 
     }
   ];
 
+  // Funções da Galeria Lightbox
   const abrirLightbox = (index) => {
     setProdutoAtivoIndex(index);
     setFotoAtualIndex(0);
   };
 
-  const fecharLightbox = () => {
-    setProdutoAtivoIndex(-1);
-  };
+  const fecharLightbox = () => setProdutoAtivoIndex(-1);
 
   const proximaFoto = (e) => {
     e.stopPropagation();
@@ -106,11 +134,77 @@ export default function LojaPage() {
     setFotoAtualIndex((prev) => (prev - 1 + galeria.length) % galeria.length);
   };
 
+  // Lógica de Manipulação do Carrinho de Compras
+  const adicionarAoCarrinho = (e, produto) => {
+    e.stopPropagation(); // Evita abrir o modal ao clicar no botão
+    if (produto.status === "Não disponível") return;
+
+    const itemExistente = carrinho.find(item => item.id === produto.id);
+
+    if (itemExistente) {
+      if (produto.status === "Pronta entrega" && itemExistente.quantidade >= produto.quantidadeDisponivel) {
+        alert(`Desculpe, temos apenas ${produto.quantidadeDisponivel} unidades deste item em pronta entrega.`);
+        return;
+      }
+      const carrinhoAtualizado = carrinho.map(item =>
+        item.id === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item
+      );
+      salvarCarrinho(carrinhoAtualizado);
+    } else {
+      salvarCarrinho([...carrinho, { ...produto, quantidade: 1 }]);
+    }
+    setCarrinhoAberto(true); // Abre a barra lateral do carrinho para dar feedback
+  };
+
+  const alterarQuantidade = (id, delta, maxDisponivel, status) => {
+    const carrinhoAtualizado = carrinho.map(item => {
+      if (item.id === id) {
+        const novaQtd = item.quantidade + delta;
+        if (novaQtd < 1) return item;
+        if (status === "Pronta entrega" && novaQtd > maxDisponivel) {
+          alert(`Limite de estoque atingido para pronta entrega (${maxDisponivel} unidades).`);
+          return item;
+        }
+        return { ...item, quantidade: novaQtd };
+      }
+      return item;
+    });
+    salvarCarrinho(carrinhoAtualizado);
+  };
+
+  const removerDoCarrinho = (id) => {
+    const carrinhoFiltrado = carrinho.filter(item => item.id !== id);
+    salvarCarrinho(carrinhoFiltrado);
+  };
+
+  // Cálculo de totais
+  const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+  const valorTotal = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+
+  // Redirecionamento seguro para a tela de checkout / confirmação de dados
+  const prosseguirParaCheckout = () => {
+    // Aqui no futuro faremos a chamada à API do Stripe / Mercado Pago criando um Session Checkout seguro.
+    // Por enquanto, podemos estruturar o redirecionamento ou exibir um aviso controlado.
+    alert("Redirecionando de forma segura para a verificação de cadastro, confirmação de pedido e gateway de pagamentos com criptografia SSL...");
+    // window.location.href = "/loja/checkout";
+  };
+
+  // Função auxiliar para renderizar as tags de status estilizadas
+  const renderBadgeStatus = (status) => {
+    if (status === "Pronta entrega") return <span className={`${styles.badge} ${styles.badgePronta}`}>Pronta Entrega</span>;
+    if (status === "Sob demanda") return <span className={`${styles.badge} ${styles.badgeDemanda}`}>Sob Demanda</span>;
+    return <span className={`${styles.badge} ${styles.badgeEsgotado}`}>Não Disponível</span>;
+  };
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <h1>Loja Lab</h1>
-        <p>Equipamentos selecionados, cordas tratadas artesanalmente e produções artísticas autorais.</p>
+        <p>Equipamentos selecionados, cordas tratadas artesanalmente e produções autorais da Cordas de Mathias.</p>
+        
+        <button className={styles.btnCartToggle} onClick={() => setCarrinhoAberto(true)}>
+          🛒 Carrinho ({totalItens})
+        </button>
       </header>
 
       <main className={styles.grid}>
@@ -120,7 +214,7 @@ export default function LojaPage() {
           return (
             <article 
               key={produto.id} 
-              className={styles.productCard}
+              className={`${styles.productCard} ${produto.status === "Não disponível" ? styles.disabledCard : ''}`}
               onClick={() => abrirLightbox(index)}
             >
               <div className={styles.imageWrapper}>
@@ -132,7 +226,10 @@ export default function LojaPage() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className={styles.hoverOverlay}>
-                  Ver Fotos ({produto.galeria.length})
+                  Ver Detalhes ({produto.galeria.length})
+                </div>
+                <div className={styles.statusBadgeWrapper}>
+                  {renderBadgeStatus(produto.status)}
                 </div>
               </div>
 
@@ -142,22 +239,76 @@ export default function LojaPage() {
                 <p className={styles.description}>{produto.descricao}</p>
                 
                 <div className={styles.footerRow}>
-                  <span className={styles.price}>{produto.preco}</span>
-                  <a 
-                    href={produto.linkWhats} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className={styles.btnBuy}
-                    onClick={(e) => e.stopPropagation()}
+                  <span className={styles.price}>
+                    {produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  </span>
+                  
+                  <button 
+                    className={`${styles.btnBuy} ${produto.status === "Não disponível" ? styles.btnDisabled : ''}`}
+                    disabled={produto.status === "Não disponível"}
+                    onClick={(e) => adicionarAoCarrinho(e, produto)}
                   >
-                    Garantir Item
-                  </a>
+                    {produto.status === "Pronta entrega" && "Adicionar item"}
+                    {produto.status === "Sob demanda" && "Encomendar"}
+                    {produto.status === "Não disponível" && "Esgotado"}
+                  </button>
                 </div>
               </div>
             </article>
           );
         })}
       </main>
+
+      {/* Gaveta / Sidebar Lateral do Carrinho de Compras */}
+      {carrinhoAberto && (
+        <div className={styles.cartOverlay} onClick={() => setCarrinhoAberto(false)}>
+          <div className={styles.cartSidebar} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.cartHeader}>
+              <h2>Seu Carrinho</h2>
+              <button className={styles.btnCloseCart} onClick={() => setCarrinhoAberto(false)}>&times;</button>
+            </div>
+
+            {carrinho.length === 0 ? (
+              <p className={styles.emptyCartText}>Seu carrinho está vazio no momento.</p>
+            ) : (
+              <>
+                <div className={styles.cartItemsList}>
+                  {carrinho.map((item) => (
+                    <div key={item.id} className={styles.cartItem}>
+                      <div className={styles.cartItemDetails}>
+                        <h4>{item.titulo}</h4>
+                        <span className={styles.cartItemCategory}>{item.categoria} - {item.status}</span>
+                        <p className={styles.cartItemPrice}>
+                          {(item.preco * item.quantidade).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                        </p>
+                      </div>
+                      
+                      <div className={styles.cartItemActions}>
+                        <div className={styles.quantitySelector}>
+                          <button onClick={() => alterarQuantidade(item.id, -1, item.quantidadeDisponivel, item.status)}>-</button>
+                          <span>{item.quantidade}</span>
+                          <button onClick={() => alterarQuantidade(item.id, 1, item.quantidadeDisponivel, item.status)}>+</button>
+                        </div>
+                        <button className={styles.btnRemoveItem} onClick={() => removerDoCarrinho(item.id)}>Remover</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className={styles.cartFooter}>
+                  <div className={styles.totalRow}>
+                    <span>Subtotal:</span>
+                    <strong>{valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>
+                  </div>
+                  <button className={styles.btnCheckout} onClick={prosseguirParaCheckout}>
+                    Fechar Pedido Seguramente
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Lightbox / Modal Expandido */}
       {produtoAtivoIndex !== -1 && (
@@ -192,16 +343,22 @@ export default function LojaPage() {
               </div>
               <p className={styles.modalDescription}>{produtos[produtoAtivoIndex].descricao}</p>
               <div className={styles.modalFooterRow}>
-                <span className={styles.modalPrice}>{produtos[produtoAtivoIndex].preco}</span>
-                <a 
-                  href={produtos[produtoAtivoIndex].linkWhats}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.btnBuy}
-                  onClick={(e) => e.stopPropagation()}
+                <span className={styles.modalPrice}>
+                  {produtos[produtoAtivoIndex].preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                </span>
+                
+                <button 
+                  className={`${styles.btnBuy} ${produtos[produtoAtivoIndex].status === "Não disponível" ? styles.btnDisabled : ''}`}
+                  disabled={produtos[produtoAtivoIndex].status === "Não disponível"}
+                  onClick={(e) => {
+                    adicionarAoCarrinho(e, produtos[produtoAtivoIndex]);
+                    fecharLightbox();
+                  }}
                 >
-                  Fazer Pedido no WhatsApp
-                </a>
+                  {produtos[produtoAtivoIndex].status === "Pronta entrega" && "Adicionar ao Carrinho"}
+                  {produtos[produtoAtivoIndex].status === "Sob demanda" && "Encomendar sob demanda"}
+                  {produtos[produtoAtivoIndex].status === "Não disponível" && "Esgotado"}
+                </button>
               </div>
             </footer>
           </div>

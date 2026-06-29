@@ -2,13 +2,15 @@
 
 .container {
   max-width: 1100px;
-  margin: 6rem auto 4rem auto; /* 6rem no topo para compensar o header fixo */
+  margin: 6rem auto 4rem auto;
   padding: 0 2rem;
+  position: relative;
 }
 
 .header {
   margin-bottom: 4rem;
   text-align: center;
+  position: relative;
 }
 
 .header h1 {
@@ -21,6 +23,26 @@
 .header p {
   font-size: 1.1rem;
   opacity: 0.8;
+}
+
+.btnCartToggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: opacity 0.2s;
+}
+
+.btnCartToggle:hover {
+  opacity: 0.9;
 }
 
 .grid {
@@ -37,12 +59,23 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer; /* Indica que o card inteiro é clicável */
+  cursor: pointer;
+  position: relative;
 }
 
 .productCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.disabledCard {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabledCard:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 .imageWrapper {
@@ -62,7 +95,37 @@
   transform: scale(1.05);
 }
 
-/* Efeito de surgimento com o número de fotos ao passar o mouse */
+.statusBadgeWrapper {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.badge {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.badgePronta {
+  background-color: #2e7d32;
+  color: #fff;
+}
+
+.badgeDemanda {
+  background-color: #ef6c00;
+  color: #fff;
+}
+
+.badgeEsgotado {
+  background-color: #c62828;
+  color: #fff;
+}
+
 .hoverOverlay {
   position: absolute;
   top: 0;
@@ -127,21 +190,23 @@
 }
 
 .price {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--foreground);
-  white-space: nowrap; /* IMPEDE A QUEBRA DO R$ E VALOR */
+  white-space: nowrap;
 }
 
 .btnBuy {
   background-color: var(--accent);
-  color: #fff !important; /* Garante que o texto do botão é sempre branco */
-  padding: 0.6rem 1.2rem;
+  color: #fff !important;
+  padding: 0.6rem 1rem;
   border-radius: 4px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
@@ -149,8 +214,159 @@
   opacity: 0.9;
 }
 
+.btnDisabled {
+  background-color: #444 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+}
+
 /* =======================================================
-   ESTILIZAÇÃO GLOBAL DO MODAL / LIGHTBOX (Disponível em qualquer tela)
+   ESTRUTURA DA GAVETA DO CARRINHO (CART SIDEBAR)
+   ======================================================= */
+.cartOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 3000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cartSidebar {
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background-color: var(--card-bg);
+  box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+}
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cartHeader h2 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.btnCloseCart {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.emptyCartText {
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 4rem;
+}
+
+.cartItemsList {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+}
+
+.cartItem {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.cartItemDetails h4 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.cartItemCategory {
+  font-size: 0.75rem;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.cartItemPrice {
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.cartItemActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantitySelector button {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: var(--foreground);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnRemoveItem {
+  background: none;
+  border: none;
+  color: #ff5252;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.cartFooter {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.5rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.btnCheckout {
+  width: 100%;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+/* =======================================================
+   ESTILIZAÇÃO GLOBAL DO MODAL / LIGHTBOX
    ======================================================= */
 .lightbox {
   position: fixed;
@@ -191,7 +407,6 @@
   border-radius: 4px;
 }
 
-/* CORREÇÃO DO MODAL: Sincroniza o fundo e herda a cor correta de texto com base no tema */
 .lightboxFooter {
   width: 100%;
   max-width: 600px;
@@ -200,7 +415,7 @@
   background-color: var(--card-bg);
   border-top: 1px solid rgba(210, 180, 140, 0.2);
   border-radius: 6px;
-  color: var(--foreground); /* Troca o cinza fixo pela variável de texto dinâmico */
+  color: var(--foreground);
 }
 
 .footerMain {
@@ -210,7 +425,6 @@
   margin-bottom: 0.8rem;
 }
 
-/* CORREÇÃO CONTRASTE: Título do modal herda a cor correta do tema ativo */
 .footerMain h3 {
   font-size: 1.2rem;
   color: var(--foreground); 
@@ -236,7 +450,6 @@
   padding-top: 1rem;
 }
 
-/* CORREÇÃO CONTRASTE: Preço do modal herda a cor correta do tema ativo */
 .modalPrice {
   font-size: 1.5rem;
   font-weight: bold;
@@ -265,13 +478,24 @@
 .btnNavRight { right: 2rem; }
 
 /* =======================================================
-   MEDIA QUERY EXCLUSIVA PARA DISPOSITIVOS MÓVEIS (CORRIGIDA)
+   RESPONSIVIDADE DISPOSITIVOS MÓVEIS
    ======================================================= */
 @media (max-width: 768px) {
   .container {
-    margin-top: 7rem; /* Compensa o menu mobile de duas linhas */
+    margin-top: 7rem;
   }
   
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .btnCartToggle {
+    position: static;
+    transform: none;
+    margin: 1rem auto 0 auto;
+    display: block;
+  }
+
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1.2rem;
@@ -279,9 +503,6 @@
 
   .productInfo {
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
   }
 
   .productInfo h2 {
@@ -295,34 +516,29 @@
     line-height: 1.4;
   }
 
-  /* ALTERAÇÃO CHAVE: Altera o fluxo para coluna no mobile, 
-     dando espaço total para o botão respirar e não cortar */
   .footerRow {
     flex-direction: column !important;
     align-items: flex-start !important;
-    justify-content: flex-end;
     width: 100%;
-    gap: 0.6rem; /* Espaço confortável entre o preço e o botão */
-    margin-top: auto;
-    padding-top: 0.5rem;
+    gap: 0.6rem;
   }
 
   .price {
     font-size: 1.1rem;
-    white-space: nowrap;
   }
 
   .btnBuy {
     display: block;
-    width: 100%; /* Faz o botão ocupar toda a largura do card */
+    width: 100%;
     padding: 0.6rem 0.5rem;
     font-size: 0.75rem;
-    text-align: center; /* Centraliza o texto "Garantir Item" */
-    white-space: nowrap;
-    box-sizing: border-box;
+    text-align: center;
   }
 
-  /* Ajustes finos do Lightbox no celular */
+  .cartSidebar {
+    max-width: 100%;
+  }
+
   .lightboxContent {
     max-height: 85vh;
     overflow-y: auto;
