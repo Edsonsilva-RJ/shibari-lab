@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import ThemeToggle from '../components/ThemeToggle';
 import AgeGate from '../components/AgeGate'; // Importação do filtro de idade
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ['latin'] });
 
