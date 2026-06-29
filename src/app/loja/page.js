@@ -194,8 +194,9 @@ export default function LojaPage() {
   const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
   const valorTotal = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
 
+
   const prosseguirParaCheckout = () => {
-    alert("Redirecionando de forma segura para a verificação de cadastro, confirmação de pedido e gateway de pagamentos com criptografia SSL...");
+    window.location.href = "/loja/checkout";
   };
 
   const renderBadgeStatus = (status) => {
