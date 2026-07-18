@@ -27,7 +27,11 @@ export default function CheckoutPage() {
     const carrinhoSalvo = localStorage.getItem('cordas_mathias_cart');
     if (carrinhoSalvo) {
       try {
-        setCarrinho(JSON.parse(carrinhoSalvo));
+        const itensSalvos = JSON.parse(carrinhoSalvo);
+        setCarrinho(itensSalvos.map(item => ({
+          ...item,
+          quantidade: Number(item.quantidade ?? item.quantity ?? 1)
+        })));
       } catch (e) {
         console.error("Erro ao carregar o carrinho no checkout", e);
       }
@@ -72,7 +76,7 @@ export default function CheckoutPage() {
       cliente: formData,
       itens: carrinho.map(item => ({
         id: item.id,
-        quantidade: item.quantity || item.quantidade // Garante conformidade com o estado do carrinho
+        quantidade: Number(item.quantidade ?? item.quantity ?? 1)
       }))
     };
 
@@ -173,7 +177,7 @@ export default function CheckoutPage() {
                 <label>Cidade</label>
                 <input type="text" name="cidade" required value={formData.cidade} onChange={handleChange} />
               </div>
-              <div className={styles.inputGroup} style={{ maxWdith: '100px' }}>
+              <div className={styles.inputGroup} style={{ maxWidth: '100px' }}>
                 <label>Estado</label>
                 <input type="text" name="estado" maxLength="2" required value={formData.estado} onChange={handleChange} />
               </div>
@@ -193,7 +197,9 @@ export default function CheckoutPage() {
               <div key={item.id} className={styles.summaryItem}>
                 <div>
                   <h4>{item.titulo}</h4>
-                  <span className={styles.itemMeta}>Qtd: {item.quantidade} x {item.status}</span>
+                  <span className={styles.itemMeta}>
+                    Qtd: {item.quantidade} x {Number(item.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  </span>
                 </div>
                 <strong className={styles.itemPrice}>
                   {(item.preco * item.quantidade).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}

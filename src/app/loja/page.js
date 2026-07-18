@@ -15,20 +15,25 @@ export default function LojaPage() {
   const [carrinho, setCarrinho] = useState([]);
   const [carrinhoAberto, setCarrinhoAberto] = useState(false);
 
-  // NOVO: Estado para a categoria ativa no filtro
-  const [categoriaAtiva, setCategoriaAtiva] = useState("Todos");
-
-  // Inicializa o carrinho com dados salvos no navegador
+  // Carrega o carrinho do localStorage após montagem do componente
   useEffect(() => {
-    const carrinhoSalvo = localStorage.getItem('cordas_mathias_cart');
-    if (carrinhoSalvo) {
-      try {
-        setCarrinho(JSON.parse(carrinhoSalvo));
-      } catch (e) {
-        console.error("Erro ao carregar carrinho", e);
+    try {
+      const carrinhoSalvo = localStorage.getItem('cordas_mathias_cart');
+      if (carrinhoSalvo) {
+        const itensSalvos = JSON.parse(carrinhoSalvo);
+        const carrinhoProcessado = itensSalvos.map(item => ({
+          ...item,
+          quantidade: Number(item.quantidade ?? item.quantity ?? 1)
+        }));
+        setCarrinho(carrinhoProcessado);
       }
+    } catch (e) {
+      console.error("Erro ao carregar carrinho", e);
     }
   }, []);
+
+  // NOVO: Estado para a categoria ativa no filtro
+  const [categoriaAtiva, setCategoriaAtiva] = useState("Todos");
 
   // Salva o carrinho localmente sempre que sofrer mutações
   const salvarCarrinho = (novoCarrinho) => {
