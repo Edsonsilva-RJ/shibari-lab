@@ -53,7 +53,7 @@ export default function PortfolioPage() {
       creditos: {
         artista: "Mathias",
         fotografo: "Pavel",
-        modelo: "Yanamy Ester"
+        modelo: "Ayanami Ester"
       },
       resumo: "Sessão focada na captura manual (DSLR) de sombras projetadas pelas cordas tensionadas, criando um jogo de luz e linhas contínuas em fundo escuro.",
       galeria: [
