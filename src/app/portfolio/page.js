@@ -35,9 +35,9 @@ export default function PortfolioPage() {
       descricao: 'Contraste entre formas orgânicas e sombras projetadas.',
       capa: 'WhatsApp_Image_2023-05-28_at_20.39.24_mcw7vh',
       creditos: {
-        artista: "Edson Henrique",
-        fotografo: "Edson Henrique",
-        modelo: "Modelo 2"
+        artista: "Mathias",
+        fotografo: "Mathias",
+        modelo: "Naty"
       },
       resumo: "Sessão focada na captura manual (DSLR) de sombras projetadas pelas cordas tensionadas, criando um jogo de luz e linhas contínuas em fundo escuro.",
       galeria: [
