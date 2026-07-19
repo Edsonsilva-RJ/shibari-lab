@@ -14,17 +14,19 @@ export default function PortfolioPage() {
       id: 1,
       titulo: 'Estudo de Linhas',
       descricao: 'Exploração de simetria e linhas de tensão paralelas.',
-      capa: 'hero-bg_fpjh2t',
+      capa: 'IMG_2161_kv83yb.jpg',
       creditos: {
-        artista: "Edson Henrique", // Quem aplicou as cordas
-        fotografo: "Edson Henrique",
-        modelo: "Modelo 1" // Substitua pelos nomes reais
+        artista: "Mathias", // Quem aplicou as cordas
+        fotografo: "Priscila Melo",
+        modelo: "Ferri" // Substitua pelos nomes reais
       },
       resumo: "Este ensaio técnico-artístico foca no alinhamento geométrico e no equilíbrio de forças em suspensões parciais, destacando o contraste sutil entre a rigidez da juta natural e as curvas anatômicas.",
       galeria: [
-        'hero-bg_fpjh2t',
-        'WhatsApp_Image_2023-05-28_at_20.39.24_mcw7vh',
-        'WhatsApp_Image_2023-05-28_at_20.39.28_sq7nz5'
+        'IMG_2161_kv83yb.jpg',
+        'IMG_2100_axdfy0.jpg',
+        'IMG_2110red_qjsxau.jpg',
+        'IMG_2176red_trkfus.jpg',
+        'IMG_2068redu_xdqiii.jpg'
       ]
     },
     {
@@ -33,14 +35,33 @@ export default function PortfolioPage() {
       descricao: 'Contraste entre formas orgânicas e sombras projetadas.',
       capa: 'WhatsApp_Image_2023-05-28_at_20.39.24_mcw7vh',
       creditos: {
-        artista: "Edson Henrique",
-        fotografo: "Edson Henrique",
-        modelo: "Modelo 2"
+        artista: "Mathias",
+        fotografo: "Mathias",
+        modelo: "Naty"
       },
       resumo: "Sessão focada na captura manual (DSLR) de sombras projetadas pelas cordas tensionadas, criando um jogo de luz e linhas contínuas em fundo escuro.",
       galeria: [
         'WhatsApp_Image_2023-05-28_at_20.39.24_mcw7vh',
         'WhatsApp_Image_2023-05-28_at_20.39.28_sq7nz5'
+      ]
+    },
+    {
+      id: 3,
+      titulo: 'Ensaio com Ester',
+      descricao: 'Um ensaio muito esperado com pessoas que admiro muito, Foi uma honra fazer esse trabalho com vocês',
+      capa: 'WhatsApp_Image_2024-01-31_at_11.47.48_1_cxbnew.jpg',
+      creditos: {
+        artista: "Mathias",
+        fotografo: "Pavel",
+        modelo: "Yanamy Ester"
+      },
+      resumo: "Sessão focada na captura manual (DSLR) de sombras projetadas pelas cordas tensionadas, criando um jogo de luz e linhas contínuas em fundo escuro.",
+      galeria: [
+        'WhatsApp_Image_2024-01-31_at_11.47.48_1_cxbnew.jpg',
+        'WhatsApp_Image_2024-01-31_at_11.47.48_w4zm3s.jpg',
+        'WhatsApp_Image_2024-01-31_at_11.49.43_wbai6w.jpg',
+        'WhatsApp_Image_2024-01-31_at_11.47.52_ehikjx.jpg',
+        'WhatsApp_Image_2024-01-31_at_11.47.50_1_cd6vea.jpg'
       ]
     }
   ];
