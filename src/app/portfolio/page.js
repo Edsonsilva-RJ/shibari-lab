@@ -12,15 +12,15 @@ export default function PortfolioPage() {
   const ensaios = [
     {
       id: 1,
-      titulo: 'Estudo de Linhas',
-      descricao: 'Exploração de simetria e linhas de tensão paralelas.',
+      titulo: 'Estudo de cores e luz',
+      descricao: 'Esse ensaio foi em colaboração com uma fotógrafa cujo trabalho admiro muito. A Priscila Melo sabe bem como capturar esses momentos únicos e espontâneos que têm a força para ficar na memória. O Ferri foi um modelo incrível, muito paciente e dedicado. Sua expressividade deu a energia que precisava para esse ensaio.',
       capa: 'IMG_2161_kv83yb.jpg',
       creditos: {
-        artista: "Mathias", // Quem aplicou as cordas
+        artista: "Mathias", 
         fotografo: "Priscila Melo",
-        modelo: "Ferri" // Substitua pelos nomes reais
+        modelo: "Ferri" 
       },
-      resumo: "Este ensaio técnico-artístico foca no alinhamento geométrico e no equilíbrio de forças em suspensões parciais, destacando o contraste sutil entre a rigidez da juta natural e as curvas anatômicas.",
+      resumo: "Este ensaio técnico-artístico explora o uso de cores e o jogo entre luz natural e artificial, evidenciando o contraste sutil entre a textura rústica da juta, as paisagens orgânicas e a imponência dos monumentos urbanos.",
       galeria: [
         'IMG_2161_kv83yb.jpg',
         'IMG_2100_axdfy0.jpg',
@@ -31,15 +31,15 @@ export default function PortfolioPage() {
     },
     {
       id: 2,
-      titulo: 'Ensaio Geométrico',
-      descricao: 'Contraste entre formas orgânicas e sombras projetadas.',
+      titulo: 'Registro espontâneo de um Domingo',
+      descricao: 'Aqui faço um breve registro de um dos meus primeiros workshops. A Naty foi uma das minhas primeiras modelos e parceiras em iniciativas com Shibari. Sou muito grato por ter tido a sua presença e por ela ter me ajudado a chegar a este momento.',
       capa: 'WhatsApp_Image_2023-05-28_at_20.39.24_mcw7vh',
       creditos: {
         artista: "Mathias",
         fotografo: "Mathias",
         modelo: "Naty"
       },
-      resumo: "Sessão focada na captura manual (DSLR) de sombras projetadas pelas cordas tensionadas, criando um jogo de luz e linhas contínuas em fundo escuro.",
+      resumo: "Registro de um workshop de Shibari num domingo, capturando a espontaneidade e a naturalidade do momento.",
       galeria: [
         'WhatsApp_Image_2023-05-28_at_20.39.24_mcw7vh',
         'WhatsApp_Image_2023-05-28_at_20.39.28_sq7nz5'
@@ -47,21 +47,22 @@ export default function PortfolioPage() {
     },
     {
       id: 3,
-      titulo: 'Ensaio com Ester',
-      descricao: 'Um ensaio muito esperado com pessoas que admiro muito, Foi uma honra fazer esse trabalho com vocês',
+      titulo: 'Instantes que Ficam para Sempre',
+      descricao: 'Há ensaios que são marcas no tempo. Fotografar a Ester era um desejo antigo e, quando aconteceu, virou um divisor de águas. Aquele mesmo dia me deu a amizade do Pavel, um cara incrível que infelizmente nos deixou pouco tempo depois. O resultado são imagens puras, carregadas de sentimento, vida e memória',
       capa: 'WhatsApp_Image_2024-01-31_at_11.47.48_1_cxbnew.jpg',
       creditos: {
         artista: "Mathias",
         fotografo: "Pavel",
         modelo: "Ayanami Ester"
       },
-      resumo: "Sessão focada na captura manual (DSLR) de sombras projetadas pelas cordas tensionadas, criando um jogo de luz e linhas contínuas em fundo escuro.",
+      resumo: "Um ensaio fotografico com shibari e ikebana, explorando a fusão entre a artes das cordas e a delicadeza das flores. Com Ester e em memória de Pavel.",
       galeria: [
         'WhatsApp_Image_2024-01-31_at_11.47.48_1_cxbnew.jpg',
         'WhatsApp_Image_2024-01-31_at_11.47.48_w4zm3s.jpg',
         'WhatsApp_Image_2024-01-31_at_11.49.43_wbai6w.jpg',
         'WhatsApp_Image_2024-01-31_at_11.47.52_ehikjx.jpg',
-        'WhatsApp_Image_2024-01-31_at_11.47.50_1_cd6vea.jpg'
+        'WhatsApp_Image_2024-01-31_at_11.47.50_1_cd6vea.jpg',
+        'pavel_lgqlhe.jpg'
       ]
     }
   ];
