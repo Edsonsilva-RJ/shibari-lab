@@ -3,24 +3,17 @@ import styles from './workshops.module.css';
 export default function WorkshopsPage() {
   // Lista de eventos - Você pode atualizar as datas aqui facilmente
   const eventos = [
-    // {
-    //   id: 1,
-    //   titulo: "Introdução às Amarras de Chão",
-    //   data: "25 de Abril, 2026",
-    //   horario: "14:00 - 18:00",
-    //   local: "Estúdio Glória, RJ",
-    //   status: "Inscrições encerradas",
-    //   formsLink: "#"
-    // },
-    // {
-    //   id: 2,
-    //   titulo: "Workshop de Fotografia e Performance",
-    //   data: "10 de Maio, 2026",
-    //   horario: "09:00 - 13:00",
-    //   local: "Santa Teresa, RJ",
-    //   status: "Brevemente",
-    //   formsLink: "#"
-    // }
+    {
+      id: 1,
+      titulo: "Nakama Nawa - 2026",
+      data: "5 á 6 de Setembro, 2026",
+      // horario: "14:00 - 18:00",
+      local: "São Paulo, SP",
+      status: "Participação confirmada",
+      tipo: "presenca",
+      // formsLink: "#"
+    }
+   
   ];
 
   return (
@@ -44,16 +37,18 @@ export default function WorkshopsPage() {
                 <p>📍 {evento.local} | ⏰ {evento.horario}</p>
                 <span className={styles.statusTag}>{evento.status}</span>
               </div>
+              {evento.tipo !== "presenca" && (
 
               <div className={styles.action}>
-                {evento.formsLink !== "#" ? (
-                  <a href={evento.formsLink} target="_blank" className={styles.btnInscriçao}>
-                    Inscrever-se via Google Forms
-                  </a>
-                ) : (
-                  <button disabled className={styles.btnDisabled}>Vagas em breve</button>
-                )}
-              </div>
+                  {evento.formsLink && evento.formsLink !== "#" ? (
+                    <a href={evento.formsLink} target="_blank" rel="noopener noreferrer" className={styles.btnInscriçao}>
+                      Inscrever-se via Google Forms
+                    </a>
+                  ) : (
+                    <button disabled className={styles.btnDisabled}>Vagas em breve</button>
+                  )}
+                </div>
+              )}
             </div>
           ))
         ) : (
