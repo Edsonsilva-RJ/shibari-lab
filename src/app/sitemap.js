@@ -1,6 +1,6 @@
 // src/app/sitemap.js
 export default function sitemap() {
-  const baseUrl = 'https://www.shibari-lab.com'; // Altere para o seu domínio final quando fizer o deploy
+  const baseUrl = 'https://www.shibari-lab.com'; 
 
   // Suas rotas principais do projeto
   const routes = ['', '/portfolio', '/agenda', '/lab', '/loja', '/contato'].map(
