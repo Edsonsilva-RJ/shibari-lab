@@ -18,6 +18,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br" suppressHydrationWarning>
       <body className={inter.className}>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-R955WTWDJD"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-R955WTWDJD');
+          `}
+        </Script>
         {/* Filtro de idade posicionado no topo para rodar imediatamente */}
         <AgeGate />
 
